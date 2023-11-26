@@ -1,14 +1,14 @@
-const User = require('../models/Siswa')
+const Siswa = require('../models/Siswa')
 
 module.exports = {
   //get all users
     index: async (req, res) => {
       try {
-          const users = await User.find()
+          const siswas = await Siswa.find()
           if(users.length > 0){
             res.status(200).json({
               status: true,
-              data: users,
+              data: siswas,
               method: req.method,
               url: req.url
             })
@@ -25,10 +25,10 @@ module.exports = {
       //get a user
       show: async (req, res) => {
         try {
-            const user = await User.findById(req.params.id)
+            const siswa = await Siswa.findById(req.params.id)
             res.json ({
               status: true,
-              data: user,
+              data: siswa,
               method: req.method,
               url: req.url,
               message: "Data berhasil didapatkan"
@@ -39,10 +39,10 @@ module.exports = {
       },
       store: async (req, res) => {
         try {
-            const user = await User.create(req.body)
+            const siswa = await Siswa.create(req.body)
             res.status(200).json ({
               status: true,
-              data: user,
+              data: siswa,
               method: req.method,
               url: req.url,
               message: "Data berhasil ditambahkan"
@@ -53,13 +53,13 @@ module.exports = {
       },
       update: async (req, res) => {
         try {
-            const user = await User.findByIdAndUpdate(req.params.id, req.body, {
+            const siswa = await Siswa.findByIdAndUpdate(req.params.id, req.body, {
                 new: true,
                 runValidators: true
             })
             res.json ({
               status: true,
-              data: user,
+              data: siswa,
               method: req.method,
               url: req.url,
               message: "Data berhasil diubah"
@@ -70,7 +70,7 @@ module.exports = {
       },
       delete: async (req, res) => {
         try {
-            await User.findByIdAndDelete(req.params.id)
+            await Siswa.findByIdAndDelete(req.params.id)
             res.json ({
               status: true,
               method: req.method,

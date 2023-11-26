@@ -1,5 +1,5 @@
 const express = require('express')
-const userrouter = require('./router/siswa')
+const userrouter = require('./router/siswas')
 const app = express()
 const port = 2000
 const connectDB = require ('./config/db')
